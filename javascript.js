@@ -10,66 +10,104 @@ function getComputerChoice() {
     }
 }
   
-function getPlayerSelection() {
-    let selectionInput = prompt('What your choice?');
-    let selection = selectionInput.toLowerCase();
-    //console.log(selection)    
-    return selection;
-}
-  
-function playRound(playerSelection) {
-  computerSelection = getComputerChoice()
+function playRound(playerSelection, computerSelection) {
+  let text;
+
   if (playerSelection === computerSelection) {
-    return 'Tie'
+    text = 'Tie';
   } else if (playerSelection === 'rock') {
     switch (computerSelection) {
       case 'scissors':
-        return 'You Win! Rock beats Scissors';
+        text = 'You Win! Rock beats Scissors';
+        break;
       case 'paper':
-       return 'You Lose! Paper beats Rock';
+        text = 'You Lose! Paper beats Rock';
+        break;
     }
   } else if (playerSelection === 'scissors') {
     switch (computerSelection) {
       case 'rock':
-        return 'You Lose! Rock beats Scissors';
+        text = 'You Lose! Rock beats Scissors';
+        break;
       case 'paper':
-        return 'You Win! Scissors beats Paper';
+        text = 'You Win! Scissors beats Paper';
+        break;
     }
   } else if (playerSelection === 'paper') {
     switch (computerSelection) {
       case 'rock':
-        return 'You Win! Paper beats Rock';
+        text = 'You Win! Paper beats Rock';
+        break;
       case 'scissors':
-        return 'You Lose! Scissors beats Paper'
+        text = 'You Lose! Scissors beats Paper';
+        break;
     }
-  } else {
-    return 'Inavalid Selection'
   }
+  console.log(playerSelection, computerSelection)
+  console.log(text)
+  result.textContent = text
 }
 
-function game() {
-  let playerSelection;
-  let computerSelection;
-  for (let i = 0; i < 5; i++) {
-    playerSelection = getPlayerSelection();
-    computerSelection = getComputerChoice();
+// function playRound(playerSelection, computerSelection) {
+//   if (playerSelection === computerSelection) {
+//     return 'Tie'
+//   } else if (playerSelection === 'rock') {
+//     switch (computerSelection) {
+//       case 'scissors':
+//         return 'You Win! Rock beats Scissors';
+//       case 'paper':
+//        return 'You Lose! Paper beats Rock';
+//     }
+//   } else if (playerSelection === 'scissors') {
+//     switch (computerSelection) {
+//       case 'rock':
+//         return 'You Lose! Rock beats Scissors';
+//       case 'paper':
+//         return 'You Win! Scissors beats Paper';
+//     }
+//   } else if (playerSelection === 'paper') {
+//     switch (computerSelection) {
+//       case 'rock':
+//         return 'You Win! Paper beats Rock';
+//       case 'scissors':
+//         return 'You Lose! Scissors beats Paper'
+//     }
+//   } else {
+//     return 'Inavalid Selection'
+//   }
+// }
+ 
 
-    console.log(playerSelection)
-    console.log(computerSelection)
+const result = document.querySelector('.display-result')
+const choices = document.querySelectorAll('.selection-btn')
+const playerScore = document.querySelector('.score--player')
+const computerScore = document.querySelector('.score--computer')
+console.log(playerScore.textContent < 5)
+console.log(computerScore.textContent < 5)
 
-    console.log(playRound(playerSelection, computerSelection))
-  }
-}
 
-// game();
+choices.forEach(choice => choice.addEventListener('click', function(){
+  playRound(choice.id, getComputerChoice())
+}))
+
+// choices.forEach(choice => choice.addEventListener('click', function(){
+//   let computerSelection = getComputerChoice()
+//   result.textContent = playRound(this.id, computerSelection);
+//   if (result.textContent.includes('Win')) {
+//     console.log('win')
+//     playerScore.textContent++
+//   }
+// }))
+    
+  
+  
+  
+  
+
+
+
 // const rock = document.querySelector("#rock")
 // rock.addEventListener('click', function(){
 //   // let computerSelection = getComputerChoice()
 //   console.log(playRound(rock.id, getComputerChoice()))
 // })
-const choices = document.querySelectorAll('.selection-btn')
-const result = document.querySelector('.display-result')
-console.log(choices)
-choices.forEach(choice => choice.addEventListener('click', function(){
-  console.log(playRound(this.id))
-}))
