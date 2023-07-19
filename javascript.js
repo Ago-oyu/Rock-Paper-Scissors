@@ -17,7 +17,8 @@ function getPlayerSelection() {
     return selection;
 }
   
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+  computerSelection = getComputerChoice()
   if (playerSelection === computerSelection) {
     return 'Tie'
   } else if (playerSelection === 'rock') {
@@ -60,4 +61,15 @@ function game() {
   }
 }
 
-game();
+// game();
+// const rock = document.querySelector("#rock")
+// rock.addEventListener('click', function(){
+//   // let computerSelection = getComputerChoice()
+//   console.log(playRound(rock.id, getComputerChoice()))
+// })
+const choices = document.querySelectorAll('.selection-btn')
+const result = document.querySelector('.display-result')
+console.log(choices)
+choices.forEach(choice => choice.addEventListener('click', function(){
+  console.log(playRound(this.id))
+}))
