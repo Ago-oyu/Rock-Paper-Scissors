@@ -32,12 +32,15 @@ $primary-font-family: 'Rowdies';
 //style
 * {
     font-size: 16px;
-    
+}
+
+html {
+    height: 100%;
 }
 
 body {
     background-image: $main-background;
-    height: 100vh;
+    min-height: 100%;
 
     h1 {
         text-align: center;
@@ -46,13 +49,37 @@ body {
         font-family: $primary-font-family;
         font-weight: 700;
         text-shadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.25);
-        margin-top: 70px;
+        padding-top: 70px;
     }
 
-    div.selection {
+    .selection {
         margin-top: 120px;
         display: flex;
         justify-content: center;
         gap: 20px;
+        font-size: 6rem;
+
+        .selection-btn {
+            border: 0;
+            height: 200px;
+            width: 224px;
+            border-radius: 20px;
+            background-color: rgba($color: #000000, $alpha: 0.06);
+            // b : blur(4px);
+        }
+    }
+
+    .display-selection {
+        margin-top: 65px;
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+
+        .selected {
+            width: 224px;
+            height: 200px;
+            background-color: rgba($color: #000000, $alpha: .45);
+            border-radius: 20px;
+        }
     }
 }
