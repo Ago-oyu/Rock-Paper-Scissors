@@ -45,19 +45,29 @@ function playRound(playerSelection, computerSelection) {
   }
   result.textContent = message
   countScore(message)
-  if (playerScore.textContent == 5) {
-    alert("Congrats, You Win The Game!")
-    resetGame();
-  } else if (computerScore.textContent == 5) {
-    alert("Sorry, You Lose The Game!")
-  }
+  //isWinning()
+ 
 }
 
 function countScore(text) {
   if (text.includes('Win')) {
     playerScore.textContent++
+    if (playerScore.textContent == 5) {
+      result.textContent = "Congrats, You Win The Game!"
+      resetGame();
+    }
   } else if (text.includes('Lose')) {
     computerScore.textContent++
+  }
+ 
+}
+
+function isWinning() {
+  if (playerScore.textContent == 5) {
+    alert("Congrats, You Win The Game!")
+    //resetGame();
+  } else if (computerScore.textContent == 5) {
+    alert("Sorry, You Lose The Game!")
   }
 }
 
@@ -67,12 +77,13 @@ function resetGame() {
   computerScore.textContent = "0";
 }
 
-const result = document.querySelector('.display-result')
+const result = document.querySelector('.display-result>h1')
 const choices = document.querySelectorAll('.selection-btn')
-const playerScore = document.querySelector('.score--player')
-const computerScore = document.querySelector('.score--computer')
+const playerScore = document.querySelector('.score--player').lastElementChild
+const computerScore = document.querySelector('.score--computer').lastElementChild
 console.log(playerScore.textContent < 5)
 console.log(computerScore.textContent < 5)
+console.log(computerScore)
 
 choices.forEach(choice => choice.addEventListener('click', function(){
   playRound(choice.id, getComputerChoice())

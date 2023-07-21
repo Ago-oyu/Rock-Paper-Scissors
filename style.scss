@@ -22,6 +22,8 @@ input, button, textarea, select {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
 
 //variables
 $main-background: linear-gradient(to bottom right,#A795CD, #A0D0D8);
@@ -34,13 +36,12 @@ $primary-font-family: 'Rowdies';
     font-size: 16px;
 }
 
-html {
-    height: 100%;
-}
-
 body {
     background-image: $main-background;
-    min-height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    padding-bottom: 3rem;
 
     h1 {
         text-align: center;
@@ -49,11 +50,11 @@ body {
         font-family: $primary-font-family;
         font-weight: 700;
         text-shadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.25);
-        padding-top: 70px;
+        padding-top: 1rem;
     }
 
     .selection {
-        margin-top: 120px;
+        margin-top: 2rem;
         display: flex;
         justify-content: center;
         gap: 20px;
@@ -61,7 +62,7 @@ body {
 
         .selection-btn {
             border: 0;
-            height: 200px;
+            height: 150px;
             width: 224px;
             border-radius: 20px;
             background-color: rgba($color: #000000, $alpha: 0.06);
@@ -70,16 +71,69 @@ body {
     }
 
     .display-selection {
-        margin-top: 65px;
+        margin-top: 2rem;
         display: flex;
         justify-content: center;
         gap: 48px;
+        
 
         .selected {
             width: 224px;
-            height: 200px;
+            height: 150px;
             background-color: rgba($color: #000000, $alpha: .45);
             border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                font-size: 6rem;
+                
+            }
+        }
+    }
+
+    .score {
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        margin-top: 2rem;
+
+        div {
+            min-width: 224px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 2rem;
+            font-family: 'Roboto', sans-serif;
+            color: $primary-font-color;
+            text-shadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.25);
+        }
+    }
+
+    .display-result {
+        margin: 0 auto;
+        margin-top: 2rem;
+        width: 800px;
+        height: 80px;
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+
+        h1 {
+            padding: 0;
+        }
+    }
+
+    footer {
+        width: 100%;
+        background-color: rgba($color: #74737E, $alpha: 0.5);
+        position: absolute;
+        bottom: 0;
+
+        p {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
         }
     }
 }
