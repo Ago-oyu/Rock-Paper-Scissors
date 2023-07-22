@@ -12,6 +12,7 @@ function getComputerChoice() {
   
 function playRound(playerSelection, computerSelection) {
   let message;
+  displaySelected(playerSelection, computerSelection);
   console.log(playerSelection, computerSelection)
   if (playerSelection === computerSelection) {
     message = 'Tie';
@@ -45,7 +46,6 @@ function playRound(playerSelection, computerSelection) {
   }
   result.textContent = message
   countScore(message)
-  //isWinning()
  
 }
 
@@ -58,16 +58,30 @@ function countScore(text) {
     }
   } else if (text.includes('Lose')) {
     computerScore.textContent++
+    if (computerScore.textContent == 5) {
+      alert("Sorry, You Lose The Game!")
+      result.textContent = "Sorry, You Lose The Game!"
+    }
   }
  
 }
 
-function isWinning() {
-  if (playerScore.textContent == 5) {
-    alert("Congrats, You Win The Game!")
-    //resetGame();
-  } else if (computerScore.textContent == 5) {
-    alert("Sorry, You Lose The Game!")
+function displaySelected(playerSelection, computerSelection) {
+  let playerSymbol = '';
+  let computerSymbol = '';
+  if (playerSelection == 'rock') {
+    playerSelected.textContent = '✊'
+  } else if (playerSelection == 'paper') {
+    playerSelected.textContent = '🖐️'
+  } else if (playerSelection == 'scissors') {
+    playerSelected.textContent = '✌️'
+  }
+  if (computerSelection == 'rock') {
+    computerSelected.textContent = '✊'
+  } else if (computerSelection == 'paper') {
+    computerSelected.textContent = '🖐️'
+  } else if (computerSelection == 'scissors') {
+    computerSelected.textContent = '✌️'
   }
 }
 
@@ -81,9 +95,8 @@ const result = document.querySelector('.display-result>h1')
 const choices = document.querySelectorAll('.selection-btn')
 const playerScore = document.querySelector('.score--player').lastElementChild
 const computerScore = document.querySelector('.score--computer').lastElementChild
-console.log(playerScore.textContent < 5)
-console.log(computerScore.textContent < 5)
-console.log(computerScore)
+const playerSelected = document.querySelector('#player-selection > p')
+const computerSelected = document.querySelector('#computer-selection > p')
 
 choices.forEach(choice => choice.addEventListener('click', function(){
   playRound(choice.id, getComputerChoice())
