@@ -62,6 +62,7 @@ function countScore(text) {
     if (computerScore.textContent == 5) {
       alert("Sorry, You Lose The Game!")
       result.textContent = "Sorry, You Lose The Game!"
+      resetGame();
     }
   }
  
