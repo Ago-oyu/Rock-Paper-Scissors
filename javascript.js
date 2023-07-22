@@ -54,6 +54,7 @@ function countScore(text) {
     playerScore.textContent++
     if (playerScore.textContent == 5) {
       result.textContent = "Congrats, You Win The Game!"
+      alert("Congrats, You Win The Game!");
       resetGame();
     }
   } else if (text.includes('Lose')) {
